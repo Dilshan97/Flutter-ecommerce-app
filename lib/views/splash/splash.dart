@@ -43,11 +43,11 @@ class _SplashState extends State<Splash> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                  'https://essstr.blob.core.windows.net/uiimg/keellslogo.png',
+                Image.asset(
+                  'assets/logo.png',
                   fit: BoxFit.contain,
                   width: MediaQuery.of(context).size.width * 0.7,
-                )
+                ),
               ],
             ),
             Container(

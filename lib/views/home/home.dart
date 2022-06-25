@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:keels/views/cart/cart.dart';
 import 'package:keels/views/favorite/favorite.dart';
 import 'package:keels/views/home/dashboard.dart';
@@ -15,7 +16,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   int currentIndex = 0;
 
   final _navigatorKeys = [
@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
     ];
   }
 
-  Future<bool> onWillPop () {
+  Future<bool> onWillPop() {
     if (currentIndex != 0) {
       setState(() {
         currentIndex = 0;
@@ -79,11 +79,12 @@ class _HomeState extends State<Home> {
           Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height - 90,
+                height: MediaQuery.of(context).size.height - 100,
                 child: Navigator(
                   key: _navigatorKeys[currentIndex],
                   onGenerateRoute: (routeSettings) {
-                    return MaterialPageRoute(builder: (context) => _buildScreens()[currentIndex],
+                    return MaterialPageRoute(
+                      builder: (context) => _buildScreens()[currentIndex],
                     );
                   },
                 ),
@@ -93,6 +94,7 @@ class _HomeState extends State<Home> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
@@ -101,36 +103,43 @@ class _HomeState extends State<Home> {
           setState(() {
             currentIndex = index;
           });
-          log(index.toString());
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: (currentIndex == 0) ? Colors.green : Colors.black,
+            icon: SvgPicture.asset(
+              'assets/icons/house.svg',
+              color: (currentIndex == 0) ? Colors.green : Colors.black38,
+              height: MediaQuery.of(context).size.height * 0.035,
+              width: MediaQuery.of(context).size.height * 0.035,
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite,
-              color: (currentIndex == 1) ? Colors.green : Colors.black,
+            icon: SvgPicture.asset(
+              'assets/icons/favorite.svg',
+              color: (currentIndex == 1) ? Colors.green : Colors.black38,
+              height: MediaQuery.of(context).size.height * 0.035,
+              width: MediaQuery.of(context).size.height * 0.035,
             ),
-            label: 'Home',
+            label: 'favorite',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_shopping_cart,
-              color: (currentIndex == 2) ? Colors.green : Colors.black,
+            icon: SvgPicture.asset(
+              'assets/icons/cart.svg',
+              color: (currentIndex == 2) ? Colors.green : Colors.black38,
+              height: MediaQuery.of(context).size.height * 0.035,
+              width: MediaQuery.of(context).size.height * 0.035,
             ),
-            label: 'Home',
+            label: 'cart',
           ),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.supervisor_account,
-                color: (currentIndex == 3) ? Colors.green : Colors.black,
+              icon: SvgPicture.asset(
+                'assets/icons/profile.svg',
+                color: (currentIndex == 3) ? Colors.green : Colors.black38,
+                height: MediaQuery.of(context).size.height * 0.035,
+                width: MediaQuery.of(context).size.height * 0.035,
               ),
-              label: 'Home',
+              label: 'profile',
               backgroundColor: Colors.green),
         ],
       ),
