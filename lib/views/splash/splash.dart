@@ -15,7 +15,7 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
 
   startTime() async {
-    var duration = const Duration(seconds: 5);
+    var duration = const Duration(seconds: 2);
     return Timer(duration, navigationPage);
   }
 
@@ -43,11 +43,16 @@ class _SplashState extends State<Splash> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                  'https://essstr.blob.core.windows.net/uiimg/keellslogo.png',
+                Image.asset(
+                  'assets/logo.png',
                   fit: BoxFit.contain,
                   width: MediaQuery.of(context).size.width * 0.7,
-                )
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.1
+                  ),
+                ),
               ],
             ),
             Container(
