@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/models/category.dart';
 import 'package:keels/providers/category_provider.dart';
+import 'package:keels/views/category/product_category.dart';
 import '../../../widgets/view_category.dart';
 
 class Categories extends StatefulWidget {
@@ -51,15 +54,25 @@ class _CategoriesState extends State<Categories> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "View All",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.green
+                  children:  [
+                    InkWell(
+                      child: const Text(
+                        "View All",
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.green
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (builder) => const ProductCategory(),
+                          ),
+                        );
+                      },
                     ),
-                    Icon(
+                    const Icon(
                       Icons.arrow_forward_ios_outlined,
                       size: 14,
                     )
@@ -71,7 +84,7 @@ class _CategoriesState extends State<Categories> {
           Container(
             height: MediaQuery.of(context).size.width * 0.08+ MediaQuery.of(context).size.height*0.05,
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.075),
+            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.01),
             child: ListView.builder(
               itemCount: categories.length,
               scrollDirection: Axis.horizontal,
