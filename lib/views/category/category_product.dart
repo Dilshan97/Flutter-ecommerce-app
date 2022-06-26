@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/models/category.dart';
 import 'package:keels/models/product.dart';
+import 'package:keels/providers/category_provider.dart';
 import 'package:keels/providers/product_provider.dart';
 import 'package:keels/widgets/view_product.dart';
 

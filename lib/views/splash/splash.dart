@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:keels/views/auth/login.dart';
 import 'package:keels/views/home/home.dart';
+import 'package:keels/views/splash/get_started.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Splash extends StatefulWidget {
@@ -21,7 +23,7 @@ class _SplashState extends State<Splash> {
 
   navigationPage() {
     Navigator.of(context).pushAndRemoveUntil(
-        PageTransition(type: PageTransitionType.fade, child: const Home()),
+        PageTransition(type: PageTransitionType.fade, child: const GetStarted()),
         (route) => false);
   }
 
