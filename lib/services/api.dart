@@ -18,6 +18,14 @@ class Api {
     return client.get(Uri.parse(url), headers: <String, String> {'Content-Type': 'application/json; charset=UTF-8', 'Accept': 'application/json'});
   }
 
+  Future<http.Response> getProducts () async {
+    String url = "$baseUrl/product/list";
+    return client.get(Uri.parse(url), headers: <String, String> {'Content-Type': 'application/json; charset=UTF-8', 'Accept': 'application/json'});
+  }
 
+  Future<http.Response> getProduct (String id) async {
+    String url = "$baseUrl/product/get/$id}";
+    return client.get(Uri.parse(url), headers: <String, String> {'Content-Type': 'application/json; charset=UTF-8', 'Accept': 'application/json'});
+  }
 
 }

@@ -1,7 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:keels/models/category.dart';
+import 'package:keels/providers/category_provider.dart';
+import '../../../widgets/view_category.dart';
 
 class Categories extends StatefulWidget {
   const Categories({Key? key}) : super(key: key);
@@ -12,38 +13,17 @@ class Categories extends StatefulWidget {
 
 class _CategoriesState extends State<Categories> {
 
-  List categories = [
-    {
-      "id": 1,
-      "name": "Vegetables",
-      "slug": "vegetables"
-    },
-    {
-      "id": 2,
-      "name": "Fruits",
-      "slug": "fruits"
-    },
-    {
-      "id": 3,
-      "name": "Beverages",
-      "slug": "beverages"
-    },
-    {
-      "id": 4,
-      "name": "Grocery",
-      "slug": "grocery"
-    },
-    {
-      "id": 5,
-      "name": "Household",
-      "slug": "household"
-    },
-    {
-      "id": 6,
-      "name": "Meat",
-      "slug": "meat"
-    }
-  ];
+  List<Category> categories = [];
+
+  @override
+  void initState() {
+    getCategories();
+  }
+
+  getCategories() async {
+    categories.clear();
+    categories = await CategoryProvider(context).getCategories();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,25 +75,8 @@ class _CategoriesState extends State<Categories> {
             child: ListView.builder(
               itemCount: categories.length,
               scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) => Container(
-                width: MediaQuery.of(context).size.width * 0.30,
-                height: MediaQuery.of(context).size.width * 0.29,
-                child: InkWell(
-                  highlightColor: Colors.transparent,
-                  splashColor: Colors.transparent,
-                  onTap: () {
-                    log(index.toString());
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        color: Colors.green,
-                        child: Text(categories[index]['name']),
-                      )
-                    ],
-                  ),
-                ),
+              itemBuilder: (BuildContext context, int index) => ViewCategory(
+                  category: categories[index],
               ),
             ),
           )
