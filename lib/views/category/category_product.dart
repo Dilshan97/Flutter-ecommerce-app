@@ -35,7 +35,12 @@ class _CategoryProductState extends State<CategoryProduct> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("${widget.category.name}"),
+        title: Text(
+          "${widget.category.name}",
+          style: const TextStyle(
+            fontFamily: "Poppins-Light",
+          ),
+        ),
         backgroundColor: Colors.green,
       ),
       body: GridView.count(

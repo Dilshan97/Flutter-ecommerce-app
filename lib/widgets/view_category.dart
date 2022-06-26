@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/models/category.dart';
 import 'package:keels/views/category/category_product.dart';
-import '../views/category/product_category.dart';
 
 class ViewCategory extends StatefulWidget {
   final Category category;

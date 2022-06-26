@@ -46,7 +46,7 @@ class _BannerSliderState extends State<BannerSlider> {
                         child: Image.network(
                       item,
                       fit: BoxFit.cover,
-                      width: 1000,
+                      width: 1500,
                     )),
                   ))
               .toList(),

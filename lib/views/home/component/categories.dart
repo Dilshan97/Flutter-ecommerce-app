@@ -4,29 +4,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/models/category.dart';
 import 'package:keels/providers/category_provider.dart';
-import 'package:keels/views/category/product_category.dart';
 import '../../../widgets/view_category.dart';
+import '../../category/product_categories.dart';
+import '../../category/product_category.dart';
 
 class Categories extends StatefulWidget {
-  const Categories({Key? key}) : super(key: key);
+
+  final List<Category> categories;
+
+  const Categories({Key? key, required this.categories}) : super(key: key);
 
   @override
   State<Categories> createState() => _CategoriesState();
 }
 
 class _CategoriesState extends State<Categories> {
-
-  List<Category> categories = [];
-
-  @override
-  void initState() {
-    getCategories();
-  }
-
-  getCategories() async {
-    categories.clear();
-    categories = await CategoryProvider(context).getCategories();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +40,8 @@ class _CategoriesState extends State<Categories> {
                   "All Categories",
                   style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.w600
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "Poppins-Light"
                   ),
                 ),
                 Row(
@@ -60,14 +53,15 @@ class _CategoriesState extends State<Categories> {
                         "View All",
                         style: TextStyle(
                             fontSize: 16,
-                            color: Colors.green
+                            color: Colors.green,
+                            fontFamily: "Poppins-Light"
                         ),
                       ),
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (builder) => const ProductCategory(),
+                            builder: (builder) => const ProductCategories(),
                           ),
                         );
                       },
@@ -86,10 +80,10 @@ class _CategoriesState extends State<Categories> {
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.01),
             child: ListView.builder(
-              itemCount: categories.length,
+              itemCount: widget.categories.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) => ViewCategory(
-                  category: categories[index],
+                  category: widget.categories[index],
               ),
             ),
           )
