@@ -21,20 +21,34 @@ class _CategoryCardState extends State<CategoryCard> {
       onTap: () => {
         log("message")
       },
-      child: Card(
-        child: Column(
-          children: [
-            Image.network("https://imgk.timesnownews.com/story/vegetables_1.jpg?tr=w-1200,h-900"),
-            Text(
-              "${widget.category.name}",
-              style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600
-              ),
-            )
-          ],
-        ),
-      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Card(
+            elevation: 8,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(150),
+            ),
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.network(
+                  "${widget.category.image}",
+                  width: MediaQuery.of(context).size.width * 0.30,
+                  height: MediaQuery.of(context).size.height * 0.13,
+                )
+              ],
+            ),
+          ),
+          Text(
+            "${widget.category.name}",
+            style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600
+            ),
+          ),
+        ],
+      )
     );
   }
 }

@@ -1,17 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:keels/models/category.dart';
-import 'package:keels/providers/category_provider.dart';
-import 'package:keels/views/category/component/category_card.dart';
 
-class ProductCategory extends StatefulWidget {
-  const ProductCategory({Key? key}) : super(key: key);
+import '../../models/category.dart';
+import '../../providers/category_provider.dart';
+import 'component/category_card.dart';
+
+class ProductCategories extends StatefulWidget {
+  const ProductCategories({Key? key}) : super(key: key);
 
   @override
-  State<ProductCategory> createState() => _ProductCategoryState();
+  State<ProductCategories> createState() => _ProductCategoriesState();
 }
 
-class _ProductCategoryState extends State<ProductCategory> {
+class _ProductCategoriesState extends State<ProductCategories> {
+
   List<Category> categories = [];
 
   @override
