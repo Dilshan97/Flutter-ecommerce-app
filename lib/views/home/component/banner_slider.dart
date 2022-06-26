@@ -33,8 +33,7 @@ class _BannerSliderState extends State<BannerSlider> {
         child: CarouselSlider(
           options: CarouselOptions(
             enlargeCenterPage: true,
-            height: MediaQuery.of(context).size.height * 0.24,
-            // aspectRatio: 16/9,
+            height: MediaQuery.of(context).size.height * 0.74,
             disableCenter: false,
             autoPlay: true,
             autoPlayInterval: Duration(seconds: 3),
