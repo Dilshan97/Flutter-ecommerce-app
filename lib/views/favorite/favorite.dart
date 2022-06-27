@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/product.dart';
+import '../../providers/product_provider.dart';
+import '../../widgets/view_product.dart';
+
 class Favorite extends StatefulWidget {
   const Favorite({Key? key}) : super(key: key);
 
@@ -9,12 +13,41 @@ class Favorite extends StatefulWidget {
 }
 
 class _FavoriteState extends State<Favorite> {
+
+  List<Product> products = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getProducts();
+  }
+
+  getProducts() async {
+    products.clear();
+    products = await ProductProvider(context).getProducts();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('favorite'),
+        title: Text(
+          'Favorites',
+          style: TextStyle(
+            fontFamily: "Poppins-Light",
+          ),
+        ),
         backgroundColor: Colors.green,
+      ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: List<Widget>.generate(products.length, (index) {
+          return GridTile(
+            child: ViewProduct(
+              product: products[index],
+            ),
+          );
+        }),
       ),
     );
   }

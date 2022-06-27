@@ -5,6 +5,10 @@ ThemeData theme() {
   return ThemeData(
       primarySwatch: Colors.green,
       scaffoldBackgroundColor: Colors.white,
-      fontFamily: "Muli"
+      fontFamily: "Poppins-Regular",
   );
+}
+
+Color primaryColor() {
+  return Colors.green;
 }
