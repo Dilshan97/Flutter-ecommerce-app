@@ -3,8 +3,6 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-
-import '../home/home.dart';
 import 'login.dart';
 
 class SignUp extends StatefulWidget {
@@ -231,37 +229,37 @@ class _SignUpState extends State<SignUp> {
                         }),
                   ),
                 ),
-                // Container(
-                //   margin: EdgeInsets.only(
-                //       top: MediaQuery.of(context).size.height * 0.02),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: [
-                //       const Text(
-                //         "already have an account? ",
-                //         style: TextStyle(
-                //             fontFamily: "Poppins-Regular", fontSize: 14),
-                //       ),
-                //       InkWell(
-                //         child: const Text(
-                //           "Log in",
-                //           style: TextStyle(
-                //               fontFamily: "Poppins-Regular",
-                //               fontSize: 14,
-                //               fontWeight: FontWeight.w700),
-                //         ),
-                //         onTap: () {
-                //           log("message");
-                //           Navigator.of(context).pushAndRemoveUntil(
-                //               PageTransition(
-                //                   type: PageTransitionType.fade,
-                //                   child: Login()),
-                //               (route) => false);
-                //         },
-                //       )
-                //     ],
-                //   ),
-                // )
+                Container(
+                  margin: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.02),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Already have an account? ",
+                        style: TextStyle(
+                            fontFamily: "Poppins-Regular", fontSize: 14),
+                      ),
+                      InkWell(
+                        child: const Text(
+                          "Log in",
+                          style: TextStyle(
+                              fontFamily: "Poppins-Regular",
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        onTap: () {
+                          log("message");
+                          Navigator.of(context).pushAndRemoveUntil(
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: Login()),
+                              (route) => false);
+                        },
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ),
