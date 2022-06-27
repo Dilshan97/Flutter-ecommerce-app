@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/views/auth/signup.dart';
+import 'package:keels/views/home/home.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Login extends StatefulWidget {
@@ -179,6 +180,11 @@ class _LoginState extends State<Login> {
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
                                   log("message");
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                      PageTransition(
+                                          type: PageTransitionType.fade,
+                                          child: Home()),
+                                          (route) => false);
                                 }
                               }),
                         ),
