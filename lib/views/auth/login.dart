@@ -14,7 +14,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-
   bool isRemember = false;
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
@@ -32,7 +31,12 @@ class _LoginState extends State<Login> {
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 200,
+                  height: MediaQuery.of(context).size.height * 0.14,
+                ),
+                Image.asset(
+                  "assets/logo.png",
+                  width: MediaQuery.of(context).size.width * 0.60,
+                  height: MediaQuery.of(context).size.height * 0.15,
                 ),
                 const Text(
                   "Welcome to Keells",
@@ -51,10 +55,13 @@ class _LoginState extends State<Login> {
                       fontWeight: FontWeight.w600),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 15, right: 15),
+                  margin: EdgeInsets.only(
+                    left: 15,
+                    right: 15,
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -62,16 +69,19 @@ class _LoginState extends State<Login> {
                         children: [
                           Container(
                             margin: EdgeInsets.only(
-                                top: MediaQuery.of(context).size.height * 0.02),
+                              top: MediaQuery.of(context).size.height * 0.02,
+                            ),
                             width: MediaQuery.of(context).size.width * 0.85,
-                            child: Text("Email address",
-                                style: TextStyle(
-                                    color: Colors.black87,
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            0.02,
-                                    fontFamily: "Poppins-Regular",
-                                    height: 1.4)),
+                            child: Text(
+                              "Email address",
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.02,
+                                fontFamily: "Poppins-Regular",
+                                height: 1.4,
+                              ),
+                            ),
                           ),
                           Container(
                             margin: EdgeInsets.only(
@@ -79,6 +89,7 @@ class _LoginState extends State<Login> {
                             width: MediaQuery.of(context).size.width * 0.85,
                             child: TextFormField(
                               controller: _emailController,
+                              keyboardType: TextInputType.emailAddress,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText: 'Enter you email address',
@@ -99,23 +110,29 @@ class _LoginState extends State<Login> {
                         children: [
                           Container(
                             margin: EdgeInsets.only(
-                                top: MediaQuery.of(context).size.height * 0.02),
+                              top: MediaQuery.of(context).size.height * 0.02,
+                            ),
                             width: MediaQuery.of(context).size.width * 0.85,
-                            child: Text("Password",
-                                style: TextStyle(
-                                    color: Colors.black87,
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            0.02,
-                                    fontFamily: "Poppins-Regular",
-                                    height: 1.4)),
+                            child: Text(
+                              "Password",
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.02,
+                                fontFamily: "Poppins-Regular",
+                                height: 1.4,
+                              ),
+                            ),
                           ),
                           Container(
                             margin: EdgeInsets.only(
-                                top: MediaQuery.of(context).size.height * 0.01),
+                              top: MediaQuery.of(context).size.height * 0.01,
+                            ),
                             width: MediaQuery.of(context).size.width * 0.85,
                             child: TextFormField(
                               controller: _passwordController,
+                              obscureText: true,
+                              keyboardType: TextInputType.text,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText: 'Enter you password',
@@ -132,28 +149,29 @@ class _LoginState extends State<Login> {
                           ),
                         ],
                       ),
-                      Column(
-                        children: [
-                          Row(
-                            children: [
-                              Checkbox(
-                                value: isRemember,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    isRemember = value!;
-                                  });
-                                },
+                      Container(
+                        margin: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.01,
+                        ),
+                        child: Row(
+                          children: [
+                            Checkbox(
+                              value: isRemember,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  isRemember = value!;
+                                });
+                              },
+                            ),
+                            const Text(
+                              "Remember me",
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontFamily: "Poppins-Regular",
                               ),
-                              const Text(
-                                "Remember me",
-                                style: TextStyle(
-                                  color: Colors.black87,
-                                  fontFamily: "Poppins-Regular",
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.023,
@@ -163,28 +181,29 @@ class _LoginState extends State<Login> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Colors.green,
+                            // color: Colors.green,
                           ),
                           child: RaisedButton(
                               textColor: Colors.white,
-                              color: Colors.green,
+                              color: Color(0xFF33bf2e),
                               padding: const EdgeInsets.all(15),
                               child: const Text(
                                 "Login",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: "Poppins-Light",
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600),
+                                  color: Colors.white,
+                                  fontFamily: "Poppins-Light",
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  log("message");
+                                  log("");
                                   Navigator.of(context).pushAndRemoveUntil(
                                       PageTransition(
                                           type: PageTransitionType.fade,
                                           child: Home()),
-                                          (route) => false);
+                                      (route) => false);
                                 }
                               }),
                         ),
@@ -198,15 +217,18 @@ class _LoginState extends State<Login> {
                             const Text(
                               "Do not have an account? ",
                               style: TextStyle(
-                                  fontFamily: "Poppins-Regular", fontSize: 14),
+                                fontFamily: "Poppins-Regular",
+                                fontSize: 14,
+                              ),
                             ),
                             InkWell(
                               child: const Text(
                                 "Register here",
                                 style: TextStyle(
-                                    fontFamily: "Poppins-Regular",
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700),
+                                  fontFamily: "Poppins-Regular",
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                ),
                               ),
                               onTap: () {
                                 log("message");

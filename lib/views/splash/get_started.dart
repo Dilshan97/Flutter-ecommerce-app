@@ -34,7 +34,8 @@ class _GetStartedState extends State<GetStarted> {
                         fontSize: 30,
                         fontFamily: "Poppins-Light",
                         fontWeight: FontWeight.w600,
-                        color: Colors.green),
+                        color: Color(0xFF33bf2e),
+                    ),
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.width * 0.04,
@@ -59,7 +60,7 @@ class _GetStartedState extends State<GetStarted> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.green,
+                        color: Color(0xFF33bf2e),
                       ),
                       alignment: Alignment.center,
                       padding: EdgeInsets.all(10),

@@ -46,7 +46,7 @@ class _DashboardState extends State<Dashboard> {
             fontFamily: "Poppins-Light",
           ),
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xFF33bf2e),
       ),
       body: SingleChildScrollView(
         child: Column(

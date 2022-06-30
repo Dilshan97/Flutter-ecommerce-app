@@ -53,7 +53,7 @@ class _CategoriesState extends State<Categories> {
                         "View All",
                         style: TextStyle(
                             fontSize: 16,
-                            color: Colors.green,
+                            color: Color(0xFF33bf2e),
                             fontFamily: "Poppins-Light"
                         ),
                       ),

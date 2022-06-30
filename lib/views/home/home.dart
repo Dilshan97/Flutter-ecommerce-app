@@ -108,7 +108,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/house.svg',
-              color: (currentIndex == 0) ? Colors.green : Colors.black38,
+              color: (currentIndex == 0) ? Color(0xFF33bf2e) : Colors.black38,
               height: MediaQuery.of(context).size.height * 0.035,
               width: MediaQuery.of(context).size.height * 0.035,
             ),
@@ -117,7 +117,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/favorite.svg',
-              color: (currentIndex == 1) ? Colors.green : Colors.black38,
+              color: (currentIndex == 1) ? Color(0xFF33bf2e) : Colors.black38,
               height: MediaQuery.of(context).size.height * 0.035,
               width: MediaQuery.of(context).size.height * 0.035,
             ),
@@ -126,7 +126,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/cart.svg',
-              color: (currentIndex == 2) ? Colors.green : Colors.black38,
+              color: (currentIndex == 2) ? Color(0xFF33bf2e) : Colors.black38,
               height: MediaQuery.of(context).size.height * 0.035,
               width: MediaQuery.of(context).size.height * 0.035,
             ),
@@ -135,12 +135,12 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/profile.svg',
-                color: (currentIndex == 3) ? Colors.green : Colors.black38,
+                color: (currentIndex == 3) ? Color(0xFF33bf2e) : Colors.black38,
                 height: MediaQuery.of(context).size.height * 0.035,
                 width: MediaQuery.of(context).size.height * 0.035,
               ),
               label: 'profile',
-              backgroundColor: Colors.green),
+              backgroundColor: Color(0xFF33bf2e)),
         ],
       ),
     );

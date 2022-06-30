@@ -43,7 +43,7 @@ class _SignUpState extends State<SignUp> {
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 21,
-                          color: Colors.green,
+                          color: Color(0xFF33bf2e),
                           fontFamily: "Poppins-Light",
                         ),
                       ),
@@ -154,6 +154,7 @@ class _SignUpState extends State<SignUp> {
                       width: MediaQuery.of(context).size.width * 0.85,
                       child: TextFormField(
                         controller: _passwordController,
+                        obscureText: true,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             hintText: 'Enter you password',
@@ -208,11 +209,11 @@ class _SignUpState extends State<SignUp> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.green,
+                      color: Color(0xFF33bf2e),
                     ),
                     child: RaisedButton(
                         textColor: Colors.white,
-                        color: Colors.green,
+                        color: Color(0xFF33bf2e),
                         padding: const EdgeInsets.all(15),
                         child: const Text(
                           "Sign Up",
