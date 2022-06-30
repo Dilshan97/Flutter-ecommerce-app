@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,8 +15,9 @@ class Api {
     return client.get(Uri.parse(url), headers: <String, String> {'Content-Type': 'application/json; charset=UTF-8', 'Accept': 'application/json'});
   }
 
-  Future<http.Response> getCategory (String id) async {
+  Future<http.Response> getProductsByCategory (String id) async {
     String url = "$baseUrl/category/get/$id";
+    log(url);
     return client.get(Uri.parse(url), headers: <String, String> {'Content-Type': 'application/json; charset=UTF-8', 'Accept': 'application/json'});
   }
 
