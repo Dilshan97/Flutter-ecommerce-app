@@ -1,15 +1,13 @@
-import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/models/category.dart';
 import 'package:keels/models/product.dart';
-import 'package:keels/providers/category_provider.dart';
 import 'package:keels/providers/product_provider.dart';
 import 'package:keels/widgets/view_product.dart';
 
 class CategoryProduct extends StatefulWidget {
+
   final Category category;
 
   const CategoryProduct({Key? key, required this.category}) : super(key: key);
@@ -19,6 +17,7 @@ class CategoryProduct extends StatefulWidget {
 }
 
 class _CategoryProductState extends State<CategoryProduct> {
+
   List<Product> products = [];
 
   @override
@@ -28,8 +27,7 @@ class _CategoryProductState extends State<CategoryProduct> {
   }
 
   getProducts() async {
-    products.clear();
-    products = await ProductProvider(context).getProducts();
+    products = await ProductProvider(context).getProductsByCategory(widget.category.id.toString());
   }
 
   @override

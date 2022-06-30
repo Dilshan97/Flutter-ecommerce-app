@@ -26,19 +26,19 @@ class CategoryProvider {
     return categories;
   }
 
-  Future<List<Category>> getCategory(String id) async {
-    List<Category> products = [];
-    await Api().getCategory(id).then((data) async {
-      if(data.statusCode == 200) {
-        List<dynamic> list = json.decode(data.body)['data'];
-        products = list.map((e) => Category.fromJson(e)).toList();
-      } else {
-        Map<String, dynamic> result = json.decode(data.body);
-      }
-    });
-    log(products.toString());
-    return products;
-  }
+  // Future<List<Category>> getCategory(String id) async {
+  //   List<Category> products = [];
+  //   await Api().getCategory(id).then((data) async {
+  //     if(data.statusCode == 200) {
+  //       List<dynamic> list = json.decode(data.body)['data'];
+  //       products = list.map((e) => Category.fromJson(e)).toList();
+  //     } else {
+  //       Map<String, dynamic> result = json.decode(data.body);
+  //     }
+  //   });
+  //   log(products.toString());
+  //   return products;
+  // }
 
 
 }
