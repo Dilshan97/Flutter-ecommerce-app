@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../models/product.dart';
@@ -38,23 +40,28 @@ class _TopProductsState extends State<TopProducts> {
                     fontFamily: "Poppins-Light",
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "View All",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.green,
-                        fontFamily: "Poppins-Light",
+                InkWell(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "View All",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Color(0xFF33bf2e),
+                          fontFamily: "Poppins-Light",
+                        ),
                       ),
-                    ),
-                    Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      size: 14,
-                    )
-                  ],
+                      Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 14,
+                      )
+                    ],
+                  ),
+                  onTap: () {
+                    log("hggjh");
+                  },
                 )
               ],
             ),

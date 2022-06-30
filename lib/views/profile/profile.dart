@@ -17,7 +17,7 @@ class _ProfileState extends State<Profile> {
           "Profile",
           style: TextStyle(fontFamily: "Poppins-Light"),
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xFF33bf2e),
       ),
       body: SingleChildScrollView(
         child: SizedBox(
@@ -57,7 +57,8 @@ class _ProfileState extends State<Profile> {
                             style: TextStyle(
                                 fontFamily: "Poppins-Light",
                                 fontWeight: FontWeight.w600,
-                                color: Colors.green),
+                                color: Color(0xFF33bf2e),
+                            ),
                           )
                         ],
                       ),
@@ -81,7 +82,7 @@ class _ProfileState extends State<Profile> {
                             Icon(
                               Icons.lock,
                               size: 30,
-                              color: Colors.green,
+                              color: Color(0xFF33bf2e),
                             ),
                             Container(
                               child: Column(
@@ -129,7 +130,7 @@ class _ProfileState extends State<Profile> {
                             Icon(
                               Icons.pin_drop,
                               size: 30,
-                              color: Colors.green,
+                              color: Color(0xFF33bf2e),
                             ),
                             Container(
                               child: Column(
@@ -184,7 +185,7 @@ class _ProfileState extends State<Profile> {
                             Icon(
                               Icons.facebook,
                               size: 30,
-                              color: Colors.green,
+                              color: Color(0xFF33bf2e),
                             ),
                             Container(
                               child: Column(
@@ -239,7 +240,7 @@ class _ProfileState extends State<Profile> {
                             Icon(
                               Icons.share_outlined,
                               size: 30,
-                              color: Colors.green,
+                              color: Color(0xFF33bf2e),
                             ),
                             Container(
                               child: Column(
@@ -294,7 +295,7 @@ class _ProfileState extends State<Profile> {
                             Icon(
                               Icons.star,
                               size: 30,
-                              color: Colors.green,
+                              color: Color(0xFF33bf2e),
                             ),
                             Container(
                               child: Column(
@@ -349,7 +350,7 @@ class _ProfileState extends State<Profile> {
                             Icon(
                               Icons.book,
                               size: 30,
-                              color: Colors.green,
+                              color: Color(0xFF33bf2e),
                             ),
                             Container(
                               child: Column(

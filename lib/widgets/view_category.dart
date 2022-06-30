@@ -40,7 +40,7 @@ class _ViewCategoryState extends State<ViewCategory> {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.green,
+                color: Color(0xFF33bf2e),
               ),
               margin: EdgeInsets.only(left: 5),
               padding: EdgeInsets.all(12),
