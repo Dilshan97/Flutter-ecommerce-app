@@ -2,21 +2,22 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:keels/views/product/products.dart';
+import 'package:page_transition/page_transition.dart';
 import '../../../models/product.dart';
 
 class TopProducts extends StatefulWidget {
-
   final String title;
   final List<Product> products;
 
-  const TopProducts({Key? key, required this.title, required this.products}) : super(key: key);
+  const TopProducts({Key? key, required this.title, required this.products})
+      : super(key: key);
 
   @override
   State<TopProducts> createState() => _TopProductsState();
 }
 
 class _TopProductsState extends State<TopProducts> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +33,7 @@ class _TopProductsState extends State<TopProducts> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                 Text(
+                Text(
                   "${widget.title}",
                   style: const TextStyle(
                     fontSize: 18,
@@ -60,7 +61,13 @@ class _TopProductsState extends State<TopProducts> {
                     ],
                   ),
                   onTap: () {
-                    log("hggjh");
+                    Navigator.of(context).pushAndRemoveUntil(
+                        PageTransition(
+                            type: PageTransitionType.fade,
+                            child: Products(
+                              title: '${widget.title}',
+                            )),
+                        (route) => false);
                   },
                 )
               ],
