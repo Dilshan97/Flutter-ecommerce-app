@@ -23,6 +23,7 @@ class _ProductCategoriesState extends State<ProductCategories> {
 
   getCategories() async {
     categories = await CategoryProvider(context).getCategories();
+    setState(() {});
   }
 
   @override

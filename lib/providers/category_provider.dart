@@ -26,6 +26,19 @@ class CategoryProvider {
     return categories;
   }
 
+  Future<List<Category>> getMainCategories() async {
+    List<Category> categories = [];
+    await Api().getMainCategories().then((data) async {
+      if(data.statusCode == 200) {
+        List<dynamic> list = json.decode(data.body)['data'];
+        categories = list.map((e) => Category.fromJson(e)).toList();
+      } else {
+        Map<String, dynamic> result = json.decode(data.body);
+      }
+    });
+    return categories;
+  }
+
   // Future<List<Category>> getCategory(String id) async {
   //   List<Category> products = [];
   //   await Api().getCategory(id).then((data) async {

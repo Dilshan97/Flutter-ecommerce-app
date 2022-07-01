@@ -29,7 +29,7 @@ class _DashboardState extends State<Dashboard> {
   }
 
   getCategories() async {
-    categories = await CategoryProvider(context).getCategories();
+    categories = await CategoryProvider(context).getMainCategories();
     setState(() {});
   }
 
