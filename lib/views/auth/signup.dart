@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:keels/providers/auth_provider.dart';
+import 'package:keels/views/home/home.dart';
 import 'package:page_transition/page_transition.dart';
 import 'login.dart';
 
@@ -18,6 +21,28 @@ class _SignUpState extends State<SignUp> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _nexusController = TextEditingController();
+
+  register() async {
+    log("Register");
+
+    String payload = jsonEncode(<String, dynamic>{
+      "name": _nexusController.text,
+      "email": _emailController.text,
+      "password": _passwordController.text,
+      "nexus_card_no": _nexusController.text
+    });
+
+    Map? result = await AuthProvider(context).register(payload);
+
+    log(json.encode(result));
+
+    if (result != null) {
+      Navigator.of(context).pop();
+      Navigator.of(context).pushAndRemoveUntil(
+          PageTransition(type: PageTransitionType.fade, child: Home()),
+          (route) => false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,14 +144,14 @@ class _SignUpState extends State<SignUp> {
                       child: TextFormField(
                         controller: _emailController,
                         decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter you email address',
-                            hintStyle: TextStyle(
-                              fontFamily: "Poppins-Regular",
-                            ),
+                          border: OutlineInputBorder(),
+                          hintText: 'Enter you email address',
+                          hintStyle: TextStyle(
+                            fontFamily: "Poppins-Regular",
+                          ),
                         ),
                         validator: (value) {
-                          if(value!.isEmpty) {
+                          if (value!.isEmpty) {
                             return "Email address is required";
                           }
                         },
@@ -156,14 +181,14 @@ class _SignUpState extends State<SignUp> {
                         controller: _passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter you password',
-                            hintStyle: TextStyle(
-                              fontFamily: "Poppins-Regular",
-                            ),
+                          border: OutlineInputBorder(),
+                          hintText: 'Enter you password',
+                          hintStyle: TextStyle(
+                            fontFamily: "Poppins-Regular",
+                          ),
                         ),
                         validator: (value) {
-                          if(value!.isEmpty) {
+                          if (value!.isEmpty) {
                             return "Password is required";
                           }
                         },
@@ -225,7 +250,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            log("message");
+                            register();
                           }
                         }),
                   ),
@@ -250,7 +275,6 @@ class _SignUpState extends State<SignUp> {
                               fontWeight: FontWeight.w700),
                         ),
                         onTap: () {
-                          log("message");
                           Navigator.of(context).pushAndRemoveUntil(
                               PageTransition(
                                   type: PageTransitionType.fade,
