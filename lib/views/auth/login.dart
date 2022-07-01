@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:keels/providers/auth_provider.dart';
 import 'package:keels/views/auth/signup.dart';
 import 'package:keels/views/home/home.dart';
 import 'package:page_transition/page_transition.dart';
@@ -18,6 +20,16 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  login() async {
+    log("Login");
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    String? result = await AuthProvider(context).login(email, password);
+
+    log(json.encode(result));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -199,11 +211,12 @@ class _LoginState extends State<Login> {
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
                                   log("");
-                                  Navigator.of(context).pushAndRemoveUntil(
-                                      PageTransition(
-                                          type: PageTransitionType.fade,
-                                          child: Home()),
-                                      (route) => false);
+                                  login();
+                                  // Navigator.of(context).pushAndRemoveUntil(
+                                  //     PageTransition(
+                                  //         type: PageTransitionType.fade,
+                                  //         child: Home()),
+                                  //     (route) => false);
                                 }
                               }),
                         ),

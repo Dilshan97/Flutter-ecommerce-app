@@ -11,6 +11,22 @@ class Api {
 
   var client = http.Client();
 
+  Future<http.Response> login (String email, String password) async {
+    String url = "$baseUrl/auth/login";
+    return client.post(
+      Uri.parse(url),
+      headers: <String, String> {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': 'application/json'
+      },
+      body: jsonEncode(<String, String>{
+        'email': email,
+        'password': password,
+        'device_name': "Dilshan's iPhone 13 Pro Max"
+      }),
+    );
+  }
+  
   Future<http.Response> register (String payload) async {
     String url = "$baseUrl/auth/register";
     return client.post(
