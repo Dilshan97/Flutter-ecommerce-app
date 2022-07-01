@@ -31,4 +31,14 @@ class Api {
     return client.get(Uri.parse(url), headers: <String, String> {'Content-Type': 'application/json; charset=UTF-8', 'Accept': 'application/json'});
   }
 
+  Future<http.Response> getNexusDeals () async {
+    String url = "$baseUrl/product/list?product_type=nexus-deals";
+    return client.get(Uri.parse(url), headers: <String, String> {'Content-Type': 'application/json; charset=UTF-8', 'Accept': 'application/json'});
+  }
+
+  Future<http.Response> getKeellsDeals () async {
+    String url = "$baseUrl/product/list?product_type=keells-deals";
+    return client.get(Uri.parse(url), headers: <String, String> {'Content-Type': 'application/json; charset=UTF-8', 'Accept': 'application/json'});
+  }
+
 }
