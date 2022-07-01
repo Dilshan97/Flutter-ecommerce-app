@@ -28,6 +28,7 @@ class _CategoryProductState extends State<CategoryProduct> {
 
   getProducts() async {
     products = await ProductProvider(context).getProductsByCategory(widget.category.id.toString());
+    setState((){});
   }
 
   @override
