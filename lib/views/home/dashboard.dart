@@ -16,8 +16,10 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+
   List<Category> categories = [];
-  List<Product> products = [];
+  List<Product> nexus_products = [];
+  List<Product> keells_products = [];
 
   @override
   void initState() {
@@ -32,7 +34,8 @@ class _DashboardState extends State<Dashboard> {
   }
 
   getProducts() async {
-    products = await ProductProvider(context).getProducts();
+    nexus_products = await ProductProvider(context).getNexusProducts();
+    keells_products = await ProductProvider(context).getKeellsProducts();
     setState(() {});
   }
 
@@ -57,14 +60,14 @@ class _DashboardState extends State<Dashboard> {
               scrollDirection: Axis.vertical,
               child: TopProducts(
                 title: "Nexus Member Deals",
-                products: products,
+                products: nexus_products,
               ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: TopProducts(
                 title: "Keells Deals",
-                products: products,
+                products: keells_products,
               ),
             )
           ],
