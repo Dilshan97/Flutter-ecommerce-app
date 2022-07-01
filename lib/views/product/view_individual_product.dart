@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../models/product.dart';
 
 class ViewIndividualProduct extends StatefulWidget {
@@ -57,6 +57,19 @@ class _ViewIndividualProductState extends State<ViewIndividualProduct> {
                   fontFamily: 'Poppins-Light',
                   fontSize: 20,
                 ),
+              ),
+              RatingBar.builder(
+                initialRating: double.parse(widget.product.rating.toString()),
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemSize: 20,
+                itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                itemBuilder: (context, _) => const Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                ), onRatingUpdate: (double value) {  },
               ),
               Container(
                 padding: const EdgeInsets.only(
