@@ -39,7 +39,7 @@ class _ProfileState extends State<Profile> {
                       alignment: Alignment.center,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
                             "Dilshan Ramesh",
                             style: TextStyle(
@@ -51,6 +51,11 @@ class _ProfileState extends State<Profile> {
                           Text(
                             "dilshanramesh@gmail.com",
                             style: TextStyle(fontFamily: "Poppins-Light"),
+                          ),
+                          Text("+94 77 185 47 09",
+                            style: TextStyle(
+                              fontFamily: "Poppins-Light"
+                            ),
                           ),
                           Text(
                             "View My Profile",
