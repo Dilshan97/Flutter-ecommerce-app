@@ -3,6 +3,10 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/models/category.dart';
+import 'package:page_transition/page_transition.dart';
+
+import '../../../widgets/view_category.dart';
+import '../category_product.dart';
 
 class CategoryCard extends StatefulWidget {
 
@@ -18,24 +22,30 @@ class _CategoryCardState extends State<CategoryCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => {
-        log("message")
+      onTap: () {
+        Navigator.of(context).pushAndRemoveUntil(
+            PageTransition(
+                type: PageTransitionType.fade,
+                child: CategoryProduct(
+                  category: widget.category,
+                )),
+                (route) => false);
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Card(
             elevation: 8,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(150),
-            ),
+            // shape: RoundedRectangleBorder(
+            //   borderRadius: BorderRadius.circular(150),
+            // ),
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.network(
                   "${widget.category.image}",
                   width: MediaQuery.of(context).size.width * 0.30,
-                  height: MediaQuery.of(context).size.height * 0.13,
+                  height: MediaQuery.of(context).size.height * 0.10,
                 )
               ],
             ),

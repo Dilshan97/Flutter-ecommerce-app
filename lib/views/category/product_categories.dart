@@ -13,7 +13,6 @@ class ProductCategories extends StatefulWidget {
 }
 
 class _ProductCategoriesState extends State<ProductCategories> {
-
   List<Category> categories = [];
 
   @override
@@ -23,14 +22,20 @@ class _ProductCategoriesState extends State<ProductCategories> {
 
   getCategories() async {
     categories = await CategoryProvider(context).getCategories();
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Categories"),
-        backgroundColor: Colors.green,
+        title: const Text(
+          "Categories",
+          style: TextStyle(
+            fontFamily: "Poppins-Light",
+          ),
+        ),
+        backgroundColor: Color(0xFF33bf2e),
       ),
       body: GridView.count(
         crossAxisCount: 3,

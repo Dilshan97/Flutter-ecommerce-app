@@ -15,6 +15,11 @@ class Api {
     return client.get(Uri.parse(url), headers: <String, String> {'Content-Type': 'application/json; charset=UTF-8', 'Accept': 'application/json'});
   }
 
+  Future<http.Response> getMainCategories () async {
+    String url = "$baseUrl/category/list?type=main";
+    return client.get(Uri.parse(url), headers: <String, String> {'Content-Type': 'application/json; charset=UTF-8', 'Accept': 'application/json'});
+  }
+
   Future<http.Response> getProductsByCategory (String id) async {
     String url = "$baseUrl/category/get/$id";
     log(url);
