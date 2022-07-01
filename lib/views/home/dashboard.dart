@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:keels/models/product.dart';
 import 'package:keels/providers/product_provider.dart';
 import 'package:keels/views/home/component/top_products.dart';
-import 'package:keels/views/home/home.dart';
 import '../../models/category.dart';
 import '../../providers/category_provider.dart';
 import 'component/banner_slider.dart';
@@ -22,25 +21,19 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   void initState() {
+    super.initState();
     getCategories();
     getProducts();
-    super.initState();
-  }
-
-
-  @override
-  void setState(fn) {
-    if(mounted) {
-      super.setState(fn);
-    }
   }
 
   getCategories() async {
     categories = await CategoryProvider(context).getCategories();
+    setState(() {});
   }
 
   getProducts() async {
     products = await ProductProvider(context).getProducts();
+    setState(() {});
   }
 
   @override

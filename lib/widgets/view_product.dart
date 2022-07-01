@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:keels/models/product.dart';
 
 class ViewProduct extends StatefulWidget {
-
   final Product product;
 
   const ViewProduct({Key? key, required this.product}) : super(key: key);
@@ -38,38 +37,40 @@ class _ViewProductState extends State<ViewProduct> {
                     "${widget.product.name}",
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                        fontWeight: FontWeight.w600
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "Poppins-Light",
                     ),
                   ),
                 ),
                 Center(
-                  child: Text("Rs.${widget.product.price}"),
+                  child: Text(
+                    "Rs.${widget.product.price}",
+                    style: TextStyle(
+                      fontFamily: "Poppins-Light",
+                    ),
+                  ),
                 )
               ],
             ),
-            Center(
-              child:  InkWell(
-                child: Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.green,
-                  ),
-                  child: Text(
-                      "Add to Cart",
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.white
-                      ),
-                  ),
-                ),
-                onTap: () {
-                  log("sdds");
-                },
-              ),
-            )
+            // Center(
+            //   child: InkWell(
+            //     child: Container(
+            //       padding: EdgeInsets.all(6),
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(20),
+            //         color: Colors.green,
+            //       ),
+            //       child: Text(
+            //         "Add to Cart",
+            //         style: TextStyle(fontSize: 13, color: Colors.white),
+            //       ),
+            //     ),
+            //     onTap: () {
+            //       log("sdds");
+            //     },
+            //   ),
+            // )
           ],
-        )
-    );
+        ));
   }
 }
