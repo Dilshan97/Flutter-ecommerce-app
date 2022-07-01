@@ -27,7 +27,7 @@ class _ProductCategoryState extends State<ProductCategory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Categories"),
+        title: Text("Categories bbbbb"),
         backgroundColor: Colors.green,
       ),
       body: GridView.count(

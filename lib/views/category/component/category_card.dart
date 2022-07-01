@@ -6,6 +6,7 @@ import 'package:keels/models/category.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../../widgets/view_category.dart';
+import '../category_product.dart';
 
 class CategoryCard extends StatefulWidget {
 
@@ -25,7 +26,7 @@ class _CategoryCardState extends State<CategoryCard> {
         Navigator.of(context).pushAndRemoveUntil(
             PageTransition(
                 type: PageTransitionType.fade,
-                child: ViewCategory(
+                child: CategoryProduct(
                   category: widget.category,
                 )),
                 (route) => false);

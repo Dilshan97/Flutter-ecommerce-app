@@ -35,7 +35,7 @@ class _ProductCategoriesState extends State<ProductCategories> {
             fontFamily: "Poppins-Light",
           ),
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xFF33bf2e),
       ),
       body: GridView.count(
         crossAxisCount: 3,
