@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:keels/views/auth/signup.dart';
+import 'package:keels/views/auth/login.dart';
 import 'package:page_transition/page_transition.dart';
 
 class GetStarted extends StatefulWidget {
@@ -28,7 +28,7 @@ class _GetStartedState extends State<GetStarted> {
             Container(
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     "Scan, Pay & Enjoy!",
                     style: TextStyle(
                         fontSize: 30,
@@ -77,7 +77,7 @@ class _GetStartedState extends State<GetStarted> {
                     ),
                     onTap: () {
                       Navigator.of(context).pushAndRemoveUntil(
-                          PageTransition(type: PageTransitionType.fade, child: const SignUp()),
+                          PageTransition(type: PageTransitionType.fade, child: const Login()),
                               (route) => false);
                     },
                   )

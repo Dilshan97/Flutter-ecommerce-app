@@ -5,8 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/providers/auth_provider.dart';
 import 'package:keels/views/auth/signup.dart';
-import 'package:keels/views/home/home.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+import '../home/home.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -16,10 +18,13 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
   bool isRemember = false;
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  final storage = const FlutterSecureStorage();
 
   login() async {
     log("Login");
@@ -29,6 +34,12 @@ class _LoginState extends State<Login> {
     String? result = await AuthProvider(context).login(email, password);
 
     log(json.encode(result));
+
+    Navigator.of(context).pushAndRemoveUntil(
+        PageTransition(
+            type: PageTransitionType.fade,
+            child: Home()),
+        (route) => false);
   }
 
   @override
@@ -70,7 +81,7 @@ class _LoginState extends State<Login> {
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     left: 15,
                     right: 15,
                   ),
@@ -210,13 +221,7 @@ class _LoginState extends State<Login> {
                               ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  log("");
                                   login();
-                                  // Navigator.of(context).pushAndRemoveUntil(
-                                  //     PageTransition(
-                                  //         type: PageTransitionType.fade,
-                                  //         child: Home()),
-                                  //     (route) => false);
                                 }
                               }),
                         ),
