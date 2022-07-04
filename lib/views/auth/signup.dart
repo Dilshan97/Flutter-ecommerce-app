@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/providers/auth_provider.dart';
 import 'package:keels/views/home/home.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
 import 'login.dart';
 
@@ -21,6 +22,14 @@ class _SignUpState extends State<SignUp> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _nexusController = TextEditingController();
+
+  late LocalStorage storage;
+
+
+  @override
+  void initState() {
+    storage  = LocalStorage('Keells');
+  }
 
   register() async {
     log("Register");

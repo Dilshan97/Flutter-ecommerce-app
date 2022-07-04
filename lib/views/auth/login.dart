@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/providers/auth_provider.dart';
 import 'package:keels/views/auth/signup.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -21,25 +22,32 @@ class _LoginState extends State<Login> {
 
   bool isRemember = false;
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController(text: "dilshanramesh81@gmail.com");
+  final _passwordController = TextEditingController(text: "123456");
 
-  final storage = const FlutterSecureStorage();
+  final secureStorage = const FlutterSecureStorage();
+  late LocalStorage storage;
+
+  @override
+  void initState() {
+    storage  = LocalStorage('Keells');
+  }
 
   login() async {
     log("Login");
     String email = _emailController.text;
     String password = _passwordController.text;
+    await secureStorage.write(key: "rememberLogin", value: "true");
 
-    String? result = await AuthProvider(context).login(email, password);
+    Map? result = await AuthProvider(context).login(email, password);
 
     log(json.encode(result));
 
-    Navigator.of(context).pushAndRemoveUntil(
-        PageTransition(
-            type: PageTransitionType.fade,
-            child: Home()),
-        (route) => false);
+    // Navigator.of(context).pushAndRemoveUntil(
+    //     PageTransition(
+    //         type: PageTransitionType.fade,
+    //         child: Home()),
+    //     (route) => false);
   }
 
   @override

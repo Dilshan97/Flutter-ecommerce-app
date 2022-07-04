@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
+import 'package:keels/providers/token_provider.dart';
 
 @lazySingleton
 class Api {
@@ -36,6 +37,20 @@ class Api {
           'Accept': 'application/json'
         },
         body: payload,
+    );
+  }
+
+  Future<http.Response> getUser () async {
+    String token = await TokenProvider().getToken() ?? "";
+    log(token);
+    String url = "$baseUrl/user";
+    return client.get(
+        Uri.parse(url),
+        headers: <String, String> {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
     );
   }
 
