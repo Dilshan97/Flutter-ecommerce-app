@@ -8,8 +8,8 @@ class TokenProvider {
   late User user;
 
   TokenProvider() {
-    secureStorage = const FlutterSecureStorage();
     storage = LocalStorage("Keells");
+    secureStorage = const FlutterSecureStorage();
 
     if (storage.getItem("user_info") is Map<String, dynamic>) {
       user = User.fromJson(storage.getItem("user_info"));
@@ -54,7 +54,7 @@ class TokenProvider {
 
     try {
       token = (await secureStorage.read(key: "access_token"));
-      remember = await secureStorage.read(key: "rememberLogin") ?? "true";
+      remember = await secureStorage.read(key: "remember") ?? "true";
     } catch (e) {
       status = false;
     } finally {
