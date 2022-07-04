@@ -33,7 +33,6 @@ class AuthProvider {
         result['access_token'] = json.decode(data.body)['data']['access_token'];
       } else {
         Map<String, dynamic> result = json.decode(data.body);
-        log(result.toString());
       }
     });
     return result;

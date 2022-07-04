@@ -19,10 +19,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-
   bool isRemember = false;
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController(text: "dilshanramesh81@gmail.com");
+  final _emailController =
+      TextEditingController(text: "dilshanramesh81@gmail.com");
   final _passwordController = TextEditingController(text: "123456");
 
   final secureStorage = const FlutterSecureStorage();
@@ -30,24 +30,21 @@ class _LoginState extends State<Login> {
 
   @override
   void initState() {
-    storage  = LocalStorage('Keells');
+    storage = LocalStorage('Keells');
   }
 
   login() async {
-    log("Login");
     String email = _emailController.text;
     String password = _passwordController.text;
     await secureStorage.write(key: "rememberLogin", value: "true");
 
     Map? result = await AuthProvider(context).login(email, password);
 
-    log(json.encode(result));
-
-    // Navigator.of(context).pushAndRemoveUntil(
-    //     PageTransition(
-    //         type: PageTransitionType.fade,
-    //         child: Home()),
-    //     (route) => false);
+    if (result!['result'] == "Authenticated") {
+      Navigator.of(context).pushAndRemoveUntil(
+          PageTransition(type: PageTransitionType.fade, child: Home()),
+          (route) => false);
+    }
   }
 
   @override
