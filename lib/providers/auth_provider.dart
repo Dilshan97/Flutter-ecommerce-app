@@ -10,10 +10,10 @@ import '../models/user.dart';
 
 class AuthProvider {
 
-  late BuildContext context;
+  late BuildContext? context;
   late User? user;
 
-  AuthProvider(this.context);
+  AuthProvider([this.context]);
 
   Future<Map?> login (String email, String password) async {
     Map result = {
@@ -21,13 +21,17 @@ class AuthProvider {
       "access_token": null
     };
     await Api().login(email, password).then((data) async {
+
+      log('request body ${data.body}');
+
       if(data.statusCode == 200 && jsonDecode(data.body)['success']) {
         Map payload = json.decode(data.body)['data'];
+        log(payload.toString());
 
         TokenProvider tokenProvider = TokenProvider();
         await tokenProvider.setToken(payload['access_token']);
         await tokenProvider.setTokenExpiration(payload['expired_at']);
-        await getUser();
+        await getUserData();
 
         result['result'] = "Authenticated";
         result['access_token'] = json.decode(data.body)['data']['access_token'];
@@ -41,6 +45,7 @@ class AuthProvider {
   Future<Map?> register (String payload) async {
     Map? data_body;
     await Api().register(payload).then((data) {
+      log('request body ${jsonDecode(data.body)}');
       if(data.statusCode == 201) {
         data_body = jsonDecode(data.body)['data'];
       } else {
@@ -50,7 +55,7 @@ class AuthProvider {
     return data_body;
   }
 
-  Future<bool> getUser () async {
+  Future<bool> getUserData () async {
     bool result = false;
     await Api().getUser().then((data) async {
       if(data.statusCode == 200 && json.decode(data.body)['success']) {
@@ -63,6 +68,18 @@ class AuthProvider {
       }
     });
     return result;
+  }
+
+  void setUser(value) {
+    user = User.fromJson(value);
+  }
+
+  User getUser() {
+    return user!; //returns the fetched user
+  }
+
+  bool isUser() {
+    return user != null ? true : false; // returns true if user is not null, anf false otherwise
   }
 
 }
