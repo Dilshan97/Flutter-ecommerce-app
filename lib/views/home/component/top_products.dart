@@ -47,8 +47,8 @@ class _TopProductsState extends State<TopProducts> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text(
+                    children:  [
+                      const Text(
                         "View All",
                         style: TextStyle(
                           fontSize: 16,
@@ -56,9 +56,15 @@ class _TopProductsState extends State<TopProducts> {
                           fontFamily: "Poppins-Light",
                         ),
                       ),
-                      Icon(
-                        Icons.arrow_forward_ios_outlined,
-                        size: 14,
+                      Container(
+                        margin: const EdgeInsets.only(
+                            left: 5
+                        ),
+                        child: const Icon(
+                            Icons.arrow_forward_ios_outlined,
+                            size: 14,
+                            color: Colors.black45
+                        ),
                       )
                     ],
                   ),

@@ -1,12 +1,9 @@
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/models/category.dart';
-import 'package:keels/providers/category_provider.dart';
 import '../../../widgets/view_category.dart';
 import '../../category/product_categories.dart';
-import '../../category/product_category.dart';
 
 class Categories extends StatefulWidget {
 
@@ -66,9 +63,15 @@ class _CategoriesState extends State<Categories> {
                         );
                       },
                     ),
-                    const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      size: 14,
+                    Container(
+                      margin: const EdgeInsets.only(
+                        left: 5
+                      ),
+                      child: const Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          size: 14,
+                          color: Colors.black45
+                      ),
                     )
                   ],
                 )

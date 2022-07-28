@@ -37,14 +37,18 @@ class _FavoriteState extends State<Favorite> {
             fontFamily: "Poppins-Light",
           ),
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xFF33bf2e),
       ),
       body: GridView.count(
-        crossAxisCount: 2,
+        crossAxisCount: 1,
+        scrollDirection: Axis.vertical,
         children: List<Widget>.generate(products.length, (index) {
           return GridTile(
-            child: ViewProduct(
-              product: products[index],
+            // child: ViewProduct(
+            //   product: products[index],
+            // ),
+            child: Card(
+              child: Text("${products[index].name}"),
             ),
           );
         }),
