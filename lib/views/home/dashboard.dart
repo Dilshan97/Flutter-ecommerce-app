@@ -26,12 +26,14 @@ class _DashboardState extends State<Dashboard> {
   List<Category> categories = [];
   List<Product> nexus_products = [];
   List<Product> keells_products = [];
+  List<Product> everyday_products = [];
 
   @override
   void initState() {
     super.initState();
     getCategories();
     getProducts();
+    getEverydayProducts();
   }
 
   getCategories() async {
@@ -42,6 +44,11 @@ class _DashboardState extends State<Dashboard> {
   getProducts() async {
     nexus_products = await ProductProvider(context).getNexusProducts();
     keells_products = await ProductProvider(context).getKeellsProducts();
+    setState(() {});
+  }
+
+  getEverydayProducts() async {
+    everyday_products = await ProductProvider(context).getProducts();
     setState(() {});
   }
 
@@ -74,6 +81,13 @@ class _DashboardState extends State<Dashboard> {
               child: TopProducts(
                 title: "Keells Deals",
                 products: keells_products,
+              ),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: TopProducts(
+                title: "Everyday Products",
+                products: everyday_products,
               ),
             )
           ],
