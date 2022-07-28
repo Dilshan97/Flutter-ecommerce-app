@@ -15,6 +15,12 @@ class Products extends StatefulWidget {
 }
 
 class _ProductsState extends State<Products> {
+
+  @override
+  void initState() {
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
