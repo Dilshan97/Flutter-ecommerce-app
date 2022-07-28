@@ -1,5 +1,11 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:keels/models/user.dart';
+import 'package:keels/providers/auth_provider.dart';
+import 'package:keels/providers/token_provider.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -9,6 +15,21 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+
+
+
+  getUser() async {
+
+    // log(json.encode(user));
+
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // getUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +60,8 @@ class _ProfileState extends State<Profile> {
                       alignment: Alignment.center,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            "Dilshan Ramesh",
+                        children:  [
+                          Text("${TokenProvider().getUser()?.name}",
                             style: TextStyle(
                                 fontFamily: "Poppins-Light",
                                 color: Colors.black,
@@ -49,10 +69,10 @@ class _ProfileState extends State<Profile> {
                                 fontSize: 16),
                           ),
                           Text(
-                            "dilshanramesh@gmail.com",
+                            "${TokenProvider().getUser()?.email}",
                             style: TextStyle(fontFamily: "Poppins-Light"),
                           ),
-                          Text("+94 77 185 47 09",
+                          Text("${TokenProvider().getUser()?.nexusCardNo}",
                             style: TextStyle(
                               fontFamily: "Poppins-Light"
                             ),

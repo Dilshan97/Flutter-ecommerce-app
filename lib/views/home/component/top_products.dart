@@ -63,13 +63,14 @@ class _TopProductsState extends State<TopProducts> {
                     ],
                   ),
                   onTap: () {
-                    Navigator.of(context).pushAndRemoveUntil(
-                        PageTransition(
-                            type: PageTransitionType.fade,
-                            child: Products(
-                              title: '${widget.title}',
-                            )),
-                        (route) => false);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (builder) =>  Products(
+                          title: '${widget.title}',
+                        ),
+                      ),
+                    );
                   },
                 )
               ],
@@ -140,15 +141,14 @@ class _TopProductsState extends State<TopProducts> {
                       ),
                     ),
                     onTap: () {
-                      // log(widget.products[index].toString());
-
-                      Navigator.of(context).pushAndRemoveUntil(
-                          PageTransition(
-                              type: PageTransitionType.fade,
-                              child: ViewIndividualProduct(
-                                product: widget.products[index],
-                              )),
-                          (route) => false);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => ViewIndividualProduct(
+                            product: widget.products[index],
+                          ),
+                        ),
+                      );
                     },
                   );
                 })

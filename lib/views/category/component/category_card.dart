@@ -23,13 +23,14 @@ class _CategoryCardState extends State<CategoryCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushAndRemoveUntil(
-            PageTransition(
-                type: PageTransitionType.fade,
-                child: CategoryProduct(
-                  category: widget.category,
-                )),
-                (route) => false);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => CategoryProduct(
+              category: widget.category,
+            ),
+          ),
+        );
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

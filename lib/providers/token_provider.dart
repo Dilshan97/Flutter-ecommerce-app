@@ -5,7 +5,7 @@ import 'package:localstorage/localstorage.dart';
 class TokenProvider {
   late FlutterSecureStorage secureStorage;
   late LocalStorage storage;
-  late User user;
+  late User? user;
 
   TokenProvider() {
     storage = LocalStorage("Keells");

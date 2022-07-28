@@ -19,13 +19,14 @@ class _ViewProductState extends State<ViewProduct> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushAndRemoveUntil(
-            PageTransition(
-                type: PageTransitionType.fade,
-                child: ViewIndividualProduct(
-                  product: widget.product,
-                )),
-            (route) => false);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => ViewIndividualProduct(
+              product: widget.product,
+            ),
+          ),
+        );
       },
       child: Card(
           // margin: EdgeInsets.all(10),

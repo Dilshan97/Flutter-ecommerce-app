@@ -1,11 +1,14 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:keels/views/auth/login.dart';
 import 'package:keels/views/home/home.dart';
 import 'package:keels/views/splash/get_started.dart';
 import 'package:page_transition/page_transition.dart';
+
+import '../../providers/token_provider.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -16,15 +19,25 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
 
+  TokenProvider tokenProvider = TokenProvider();
+
   startTime() async {
     var duration = const Duration(seconds: 2);
     return Timer(duration, navigationPage);
   }
 
-  navigationPage() {
-    Navigator.of(context).pushAndRemoveUntil(
-        PageTransition(type: PageTransitionType.fade, child: const GetStarted()),
-        (route) => false);
+  Future<void> navigationPage() async {
+    if (await tokenProvider.checkToken()) {
+      log(json.encode(tokenProvider.getUser()));
+      Navigator.of(context).pushAndRemoveUntil(
+          PageTransition(type: PageTransitionType.fade, child: const Home()),
+          (route) => false);
+    } else {
+      Navigator.of(context).pushAndRemoveUntil(
+          PageTransition(
+              type: PageTransitionType.fade, child: const GetStarted()),
+          (route) => false);
+    }
   }
 
   @override
@@ -52,8 +65,7 @@ class _SplashState extends State<Splash> {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.1
-                  ),
+                      top: MediaQuery.of(context).size.height * 0.1),
                 ),
               ],
             ),

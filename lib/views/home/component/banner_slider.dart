@@ -30,12 +30,18 @@ class _BannerSliderState extends State<BannerSlider> {
         height: MediaQuery.of(context).size.height * 0.25,
         width: MediaQuery.of(context).size.width,
         alignment: Alignment.center,
+        padding: EdgeInsets.only(
+          left: MediaQuery.of(context).size.width * 0.02,
+          right: MediaQuery.of(context).size.width * 0.02,
+        ),
         child: CarouselSlider(
           options: CarouselOptions(
-            enlargeCenterPage: true,
+            enlargeCenterPage: false,
             height: MediaQuery.of(context).size.height * 0.74,
             disableCenter: false,
             autoPlay: true,
+            viewportFraction: 1,
+            aspectRatio: 16/7,
             autoPlayInterval: Duration(seconds: 3),
             autoPlayAnimationDuration: Duration(milliseconds: 800),
             autoPlayCurve: Curves.fastOutSlowIn,
