@@ -4,8 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/views/product/products.dart';
 import 'package:keels/views/product/view_individual_product.dart';
-import 'package:keels/views/product/view_product.dart';
-import 'package:page_transition/page_transition.dart';
 import '../../../models/product.dart';
 
 class TopProducts extends StatefulWidget {
