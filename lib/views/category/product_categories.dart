@@ -38,7 +38,7 @@ class _ProductCategoriesState extends State<ProductCategories> {
         backgroundColor: Color(0xFF33bf2e),
       ),
       body: GridView.count(
-        crossAxisCount: 3,
+        crossAxisCount: 2,
         children: List<Widget>.generate(categories.length, (index) {
           return GridTile(
             child: CategoryCard(
