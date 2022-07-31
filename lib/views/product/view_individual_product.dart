@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:keels/providers/product_provider.dart';
 import '../../models/product.dart';
+import '../category/category_product.dart';
 
 class ViewIndividualProduct extends StatefulWidget {
   final Product product;
@@ -152,7 +153,9 @@ class _ViewIndividualProductState extends State<ViewIndividualProduct> {
                               // Navigator.push(
                               //   context,
                               //   MaterialPageRoute(
-                              //     builder: (builder) => const ProductCategories(),
+                              //     builder: (builder) => CategoryProduct(
+                              //       category: widget.product.category,
+                              //     ),
                               //   ),
                               // );
                             },

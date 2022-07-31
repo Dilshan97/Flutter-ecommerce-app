@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keels/providers/token_provider.dart';
+import 'package:keels/views/profile/change_password.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -42,12 +43,12 @@ class _ProfileState extends State<Profile> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      "assets/avatar.png",
-                      width: MediaQuery.of(context).size.width * 0.22,
+                      "assets/user.png",
+                      width: MediaQuery.of(context).size.width * 0.32,
                       height: MediaQuery.of(context).size.height * 0.22,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 12),
+                      margin: EdgeInsets.only(left: 2),
                       alignment: Alignment.center,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,55 +89,65 @@ class _ProfileState extends State<Profile> {
               Container(
                 child: Column(
                   children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.70,
-                      margin: EdgeInsets.only(bottom: 12),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.lock,
-                                size: 30,
-                                color: Color(0xFF33bf2e),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    right: 30
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Change Password",
-                                      style: TextStyle(
-                                          fontFamily: "Poppins-Regular",
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                    Text(
-                                      "Change your password",
-                                      style: TextStyle(
-                                          fontFamily: "Poppins-Regular",
-                                          color: Colors.black45),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios_outlined,
-                                size: 20,
-                              )
-                            ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (builder) => const ChangePassword()
                           ),
-                          Divider(
-                            color: Colors.black12,
-                            thickness: 0.5,
-                            indent: 20,
-                          )
-                        ],
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.70,
+                        margin: EdgeInsets.only(bottom: 12),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(
+                                  Icons.lock,
+                                  size: 30,
+                                  color: Color(0xFF33bf2e),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      right: 30
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Change Password",
+                                        style: TextStyle(
+                                            fontFamily: "Poppins-Regular",
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w700),
+                                      ),
+                                      Text(
+                                        "Change your password",
+                                        style: TextStyle(
+                                            fontFamily: "Poppins-Regular",
+                                            color: Colors.black45),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_outlined,
+                                  size: 20,
+                                )
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.black12,
+                              thickness: 0.5,
+                              indent: 20,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     Container(

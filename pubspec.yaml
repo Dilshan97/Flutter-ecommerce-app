@@ -75,6 +75,7 @@ flutter:
      - assets/icons/profile.svg
      - assets/icons/favorite.svg
      - assets/icons/cart.svg
+     - assets/user.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
