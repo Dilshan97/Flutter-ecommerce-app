@@ -6,9 +6,10 @@ import '../../models/product.dart';
 class Products extends StatefulWidget {
 
   final String title;
+  final int category_id;
   // final List<Product> products;
 
-  const Products({Key? key, required this.title}) : super(key: key);
+  const Products({Key? key, required this.title, required this.category_id}) : super(key: key);
 
   @override
   State<Products> createState() => _ProductsState();
@@ -35,7 +36,7 @@ class _ProductsState extends State<Products> {
         ),
       ),
       body: Container(
-        child: Text('products'),
+        child: Text('products b'),
       ),
     );
   }
