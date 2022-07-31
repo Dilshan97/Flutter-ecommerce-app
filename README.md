@@ -15,4 +15,5 @@ A simple e-commerce flutter application that creates for Flutter beginners. This
 | <img src="https://github.com/Dilshan97/Flutter-ecommerce-app/blob/master/screenshot/home.png?raw=true" style="width: 350px;"/> | <img src="https://github.com/Dilshan97/Flutter-ecommerce-app/blob/master/screenshot/categories.png?raw=true" style="width: 350px;"/> |
 |Categoyr Products UI|Product Info UI|
 | <img src="https://github.com/Dilshan97/Flutter-ecommerce-app/blob/master/screenshot/category products.png?raw=true" style="width: 350px;"/>|<img src="https://github.com/Dilshan97/Flutter-ecommerce-app/blob/master/screenshot/product.png?raw=true" style="width: 350px;"/>|
-
+|Profile UI||
+| <img src="https://github.com/Dilshan97/Flutter-ecommerce-app/blob/master/screenshot/profile.png?raw=true" style="width: 350px;"/> |
