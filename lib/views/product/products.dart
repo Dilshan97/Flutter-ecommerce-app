@@ -1,15 +1,17 @@
+
+import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../models/product.dart';
+import '../../providers/product_provider.dart';
+import '../../widgets/view_product.dart';
 
 class Products extends StatefulWidget {
 
   final String title;
-  final int category_id;
-  // final List<Product> products;
+  final List<Product> products;
 
-  const Products({Key? key, required this.title, required this.category_id}) : super(key: key);
+  const Products({Key? key, required this.title, required this.products}) : super(key: key);
 
   @override
   State<Products> createState() => _ProductsState();
@@ -17,9 +19,17 @@ class Products extends StatefulWidget {
 
 class _ProductsState extends State<Products> {
 
+  // List<Product> products = [];
+
   @override
   void initState() {
+    // log(widget.category_id.toString());
+    getProducts();
+  }
 
+  getProducts() async {
+    // products = await ProductProvider(context).getProductsByCategory(widget.category_id.toString());
+    setState(() {});
   }
 
   @override
@@ -30,13 +40,20 @@ class _ProductsState extends State<Products> {
         backwardsCompatibility: true,
         title: Text(
           '${widget.title}',
-          style: TextStyle(
+          style: const TextStyle(
             fontFamily: "Poppins-Light",
           ),
         ),
       ),
-      body: Container(
-        child: Text('products b'),
+      body:  GridView.count(
+        crossAxisCount: 2,
+        children: List<Widget>.generate(widget.products.length, (index) {
+          return GridTile(
+            child: ViewProduct(
+              product: widget.products[index],
+            ),
+          );
+        }),
       ),
     );
   }
