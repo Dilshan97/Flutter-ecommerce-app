@@ -72,8 +72,7 @@ class _TopProductsState extends State<TopProducts> {
                       MaterialPageRoute(
                         builder: (builder) =>  Products(
                           title: '${widget.title}',
-                          category_id: 2,
-
+                          products: widget.products,
                         ),
                       ),
                     );
